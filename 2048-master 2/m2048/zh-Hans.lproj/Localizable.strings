@@ -1,0 +1,15 @@
+/* 
+  Localization.strings
+  m2048
+
+  Created by linxiaolong on 16/1/29.
+  Copyright © 2016年 Danqing. All rights reserved.
+*/
+"moreapps"="好应用";
+"GameType"="玩法";
+"Theme"="主题";
+"BoardSize"="方格数";
+
+"Default"="默认";
+"Vibrant"="鲜艳";
+"Joyful"="轻松";
