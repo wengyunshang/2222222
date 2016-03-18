@@ -50,6 +50,7 @@
 		A80525121C993D4100DFAEC1 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A80525111C993D4100DFAEC1 /* libstdc++.tbd */; };
 		A80525171C993F9100DFAEC1 /* sdkCall.m in Sources */ = {isa = PBXBuildFile; fileRef = A80525151C993F9100DFAEC1 /* sdkCall.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A805251B1C9954EA00DFAEC1 /* SDKController.m in Sources */ = {isa = PBXBuildFile; fileRef = A805251A1C9954EA00DFAEC1 /* SDKController.m */; };
+		A84F7F381C9BFC530014EA39 /* OpenRankController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F7F371C9BFC530014EA39 /* OpenRankController.m */; };
 		A853AAD31C5B57AA0059582E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A853AAD51C5B57AA0059582E /* Localizable.strings */; };
 		A8548E981C9153AC00A6EE7D /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8548E8E1C9153AC00A6EE7D /* GoogleMobileAds.framework */; };
 		A8548E991C9153AC00A6EE7D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A8548E961C9153AC00A6EE7D /* README.txt */; };
@@ -133,6 +134,9 @@
 		A80525161C993F9100DFAEC1 /* sdkDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdkDef.h; sourceTree = "<group>"; };
 		A80525191C9954EA00DFAEC1 /* SDKController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKController.h; sourceTree = "<group>"; };
 		A805251A1C9954EA00DFAEC1 /* SDKController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKController.m; sourceTree = "<group>"; };
+		A84F7F361C9BFC530014EA39 /* OpenRankController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenRankController.h; sourceTree = "<group>"; };
+		A84F7F371C9BFC530014EA39 /* OpenRankController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenRankController.m; sourceTree = "<group>"; };
+		A84F7F391C9C03BB0014EA39 /* OpenRankConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenRankConfig.h; sourceTree = "<group>"; };
 		A853AACE1C5B577F0059582E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A853AACF1C5B577F0059582E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		A853AAD01C5B577F0059582E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -410,8 +414,11 @@
 				A8548EA01C915AD700A6EE7D /* OpenRankURLRequest.m */,
 				A8548E9C1C9156C000A6EE7D /* OpenRankViewController.h */,
 				A8548E9D1C9156C000A6EE7D /* OpenRankViewController.m */,
+				A84F7F391C9C03BB0014EA39 /* OpenRankConfig.h */,
 				A80525191C9954EA00DFAEC1 /* SDKController.h */,
 				A805251A1C9954EA00DFAEC1 /* SDKController.m */,
+				A84F7F361C9BFC530014EA39 /* OpenRankController.h */,
+				A84F7F371C9BFC530014EA39 /* OpenRankController.m */,
 			);
 			name = openrank;
 			sourceTree = "<group>";
@@ -532,6 +539,7 @@
 				2443DC9A18D663FC00C920C1 /* M2Scene.m in Sources */,
 				24C4515E18D6DC740001FCFD /* M2Grid.m in Sources */,
 				24C4518118E265390001FCFD /* M2Overlay.m in Sources */,
+				A84F7F381C9BFC530014EA39 /* OpenRankController.m in Sources */,
 				2443DCAF18D6C18400C920C1 /* M2Tile.m in Sources */,
 				A80525171C993F9100DFAEC1 /* sdkCall.m in Sources */,
 				A805251B1C9954EA00DFAEC1 /* SDKController.m in Sources */,

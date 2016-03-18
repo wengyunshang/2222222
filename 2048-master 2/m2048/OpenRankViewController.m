@@ -7,73 +7,54 @@
 //
 
 #import "OpenRankViewController.h"
-#import "OpenRankURLRequest.h"
+#import "OpenRankConfig.h"
 
-#define OPENRANKISLOGIN @"OPENRANKISLOGIN" //是否已登录
-#define openrankopenid @"openrankopenid"
-#define openrankusername @"openrankusername"
-#define openrankuserlogo @"openrankuserlogo"
 
 
 @interface OpenRankViewController ()<UIWebViewDelegate>
 @property(nonatomic, retain) UIWebView *webView;
+
 @end
 
 @implementation OpenRankViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     // Do any additional setup after loading the view.
     [self initWebView];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]
+                                initWithTitle:@"返回"
+                                style:UIBarButtonItemStyleDone
+                                target:self
+                                action:@selector(closeSelf)];
+//    [leftBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"STHeitiSC-Light" size:16], NSFontAttributeName,nil]
+//                           forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+//    [leftBtn release];
+//    UIButton *closeBtn = [[UIButton alloc]initWithFrame:CGRectMake(40, 40, 50, 50)];
+//    closeBtn.layer.cornerRadius = 25;
+//    closeBtn.backgroundColor = [UIColor blackColor];
+//    [closeBtn addTarget:self action:@selector(closeSelf) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:closeBtn];
 }
 
-//登录注册
-+(void)loginForOpenId:(NSString *)openId appId:(NSString *)appId nickName:(NSString *)nickName headUrl:(NSString *)headUrl{
- 
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://openrank.duapp.com/index.php?c=user&a=login&user_openid=%@&app_id=%@&score_score=%@&user_name=%@&user_logo=%@",openId,appId,@"0",nickName,headUrl]];
-    OpenRankURLRequest *request = [OpenRankURLRequest hnRrequestWithURL:url];
-    [request URLRequestAsynchronouslyWithCompletionUsingBlock:^(BOOL isfinish,OpenRankURLRequest *request){
-        if (isfinish) {
-            NSError *error = nil;
-            NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:request.data options:NSJSONReadingAllowFragments error:&error];
-            
-            if (error) {
-                
-            }
-            else{
-                [[NSUserDefaults standardUserDefaults] setValue:nickName forKey:openrankusername];
-                [[NSUserDefaults standardUserDefaults] setValue:openId forKey:openrankopenid];
-                [[NSUserDefaults standardUserDefaults] setValue:headUrl forKey:openrankuserlogo];
-                //设置已登录标示
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:OPENRANKISLOGIN];
-            }
-            
-        }else{
-        }
-    }];
-    
-}
-
-//显示排行版
-+(void)showRankForOpenId:(NSString*)openId appId:(NSString*)appId score:(NSString*)score{
-    
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    
-    
-    OpenRankViewController *openVC = [[OpenRankViewController alloc]init];
-    [window.rootViewController presentViewController:openVC animated:YES completion:^{
-    
+-(void)closeSelf{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
     }];
 }
 
-+(BOOL)isLogin{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:OPENRANKISLOGIN];
-}
 
 
-+(void)cleanOpenRankForAppId:(NSString*)appId{
-    
-}
+
+
+
+
+
+
 
 
 -(void)initWebView{
@@ -104,6 +85,7 @@
     NSString *openid = [[NSUserDefaults standardUserDefaults]valueForKey:openrankopenid];
     NSString *appId = @"10000";
     NSString *score = @"123123123";
+    NSLog(@"%@",[NSString stringWithFormat:@"http://openrank.duapp.com/index.php?c=rank&a=ShowRankHtml&user_openid=%@&app_id=%@&score_score=%@",openid,appId,score]);
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://openrank.duapp.com/index.php?c=rank&a=ShowRankHtml&user_openid=%@&app_id=%@&score_score=%@",openid,appId,score]]];
     [self.webView loadRequest:request];
 }

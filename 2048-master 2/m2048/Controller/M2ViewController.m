@@ -20,6 +20,7 @@
 @implementation M2ViewController {
   IBOutlet UIButton *_restartButton;
   IBOutlet UIButton *_settingsButton;
+    IBOutlet UIButton *_rankButton;
   IBOutlet UILabel *_targetScore;
   IBOutlet UILabel *_subtitle;
   IBOutlet M2ScoreView *_scoreView;
@@ -41,6 +42,9 @@
   
   _restartButton.layer.cornerRadius = [GSTATE cornerRadius];
   _restartButton.layer.masksToBounds = YES;
+    
+    _rankButton.layer.cornerRadius = [GSTATE cornerRadius];
+    _rankButton.layer.masksToBounds = YES;
   
   _settingsButton.layer.cornerRadius = [GSTATE cornerRadius];
   _settingsButton.layer.masksToBounds = YES;
@@ -73,6 +77,9 @@
   _restartButton.backgroundColor = [GSTATE buttonColor];
   _restartButton.titleLabel.font = [UIFont fontWithName:[GSTATE boldFontName] size:14];
   
+    _rankButton.backgroundColor = [GSTATE buttonColor];
+    _rankButton.titleLabel.font = [UIFont fontWithName:[GSTATE boldFontName] size:14];
+    
   _settingsButton.backgroundColor = [GSTATE buttonColor];
   _settingsButton.titleLabel.font = [UIFont fontWithName:[GSTATE boldFontName] size:14];
   
@@ -124,17 +131,22 @@
 - (IBAction)restart:(id)sender
 {
     
-//    OpenRankViewController *openVC = [[OpenRankViewController alloc]init];
-//    [self presentViewController:openVC animated:YES completion:^{
-//        
-//    }];
-//
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"createAndLoadInterstitial" object:nil];
-//  [self hideOverlay];
-//  [self updateScore:0];
-//  [_scene startNewGame];
+    OpenRankViewController *openVC = [[OpenRankViewController alloc]init];
+    [self presentViewController:openVC animated:YES completion:^{
+        
+    }];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"createAndLoadInterstitial" object:nil];
+  [self hideOverlay];
+  [self updateScore:0];
+  [_scene startNewGame];
+
+}
+- (IBAction)rank:(id)sender
+{
     [[SDKController getinstance] login];
 }
+
 
 
 

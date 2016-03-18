@@ -23,6 +23,8 @@
 /* Class = "UIButton"; normalTitle = "Restart"; ObjectID = "WSt-5b-bvD"; */
 "WSt-5b-bvD.normalTitle" = "重新开始";
 
+"jug-Nc-okV.normalTitle" = "排行榜";
+
 /* Class = "UILabel"; text = "200000"; ObjectID = "dqu-Jy-DNX"; */
 "dqu-Jy-DNX.text" = "200000";
 

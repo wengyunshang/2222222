@@ -8,10 +8,10 @@
 
 #import "SDKController.h"
 #import "sdkCall.h"
-#import "OpenRankViewController.h"
+#import "OpenRankController.h"
 
 #define APPID @"10000"
-
+#define OPENRANKCONTROLL [OpenRankController getinstance]
 static SDKController *g_instance = nil;
 @implementation SDKController
 
@@ -21,6 +21,7 @@ static SDKController *g_instance = nil;
     {
         if (nil == g_instance)
         {
+            ;
             //g_instance = [[sdkCall alloc] init];
             
             g_instance = [[super allocWithZone:nil] init];
@@ -36,7 +37,7 @@ static SDKController *g_instance = nil;
 -(void)login{
     
     
-    if (![OpenRankViewController isLogin]) {
+    if (![OPENRANKCONTROLL isLogin]) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(analysisResponse:) name:kGetUserInfoResponse object:[sdkCall getinstance]];
         NSArray* permissions = [NSArray arrayWithObjects:
                                 kOPEN_PERMISSION_GET_USER_INFO,
@@ -57,7 +58,7 @@ static SDKController *g_instance = nil;
         [[[sdkCall getinstance] oauth] authorize:permissions inSafari:NO];
     }else{
         //执行显示排行榜
-        [OpenRankViewController showRankForOpenId:[[sdkCall getinstance]oauth].openId appId:APPID score:@"222222"];
+        [OPENRANKCONTROLL showRankForScore:[NSString stringWithFormat:@"%ld",(long)[Settings integerForKey:@"Best Score"]]];
     }
     
 }
@@ -68,9 +69,17 @@ static SDKController *g_instance = nil;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:kGetUserInfoResponse];
     // 登录
-    [OpenRankViewController loginForOpenId:[[sdkCall getinstance]oauth].openId
+    [OPENRANKCONTROLL loginForOpenId:[[sdkCall getinstance]oauth].openId
                                      appId:APPID
                                   nickName:[sdkCall getinstance].nickname
-                                   headUrl:[sdkCall getinstance].logo];
+                                   headUrl:[sdkCall getinstance].logo
+                            loginBackBlock:^(BOOL loginBack) {
+                                
+                                if (loginBack) {
+                                    NSLog(@"登录成功");
+                                    //执行显示排行榜
+                                    [OPENRANKCONTROLL showRankForScore:[NSString stringWithFormat:@"%ld",(long)[Settings integerForKey:@"Best Score"]]];
+                                }
+    }];
 }
 @end
